@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <title>Code coverage report for node-npmtest-mkdirp/mkdirp/index.js</title>
     <meta charset="utf-8">
     <style>
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-mkdirp/mkdirp/</a> &#187; index.js</div>
+    <div class="path"><a href="../../index.html">All files</a> » <a href="index.html">node-npmtest-mkdirp/mkdirp/</a> » index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -418,104 +416,105 @@ var _0777 = parseInt('0777', 8);
 &nbsp;
 module.exports = mkdirP.mkdirp = mkdirP.mkdirP = mkdirP;
 &nbsp;
-<span class="fstat-no" title="function not covered" >function mkdirP (p, opts, f, made) {</span>
-<span class="cstat-no" title="statement not covered" >    if (typeof opts === 'function') {</span>
-<span class="cstat-no" title="statement not covered" >        f = opts;</span>
-<span class="cstat-no" title="statement not covered" >        opts = {};</span>
+<span class="fstat-no" title="function not covered">function mkdirP (p, opts, f, made) {</span>
+<span class="cstat-no" title="statement not covered">    if (typeof opts === 'function') {</span>
+<span class="cstat-no" title="statement not covered">        f = opts;</span>
+<span class="cstat-no" title="statement not covered">        opts = {};</span>
     }
-    else <span class="cstat-no" title="statement not covered" >if (!opts || typeof opts !== 'object') {</span>
-<span class="cstat-no" title="statement not covered" >        opts = { mode: opts };</span>
+    else <span class="cstat-no" title="statement not covered">if (!opts || typeof opts !== 'object') {</span>
+<span class="cstat-no" title="statement not covered">        opts = { mode: opts };</span>
     }
     
-<span class="cstat-no" title="statement not covered" >    var mode = opts.mode;</span>
-<span class="cstat-no" title="statement not covered" >    var xfs = opts.fs || fs;</span>
+<span class="cstat-no" title="statement not covered">    var mode = opts.mode;</span>
+<span class="cstat-no" title="statement not covered">    var xfs = opts.fs || fs;</span>
     
-<span class="cstat-no" title="statement not covered" >    if (mode === undefined) {</span>
-<span class="cstat-no" title="statement not covered" >        mode = _0777 &amp; (~process.umask());</span>
+<span class="cstat-no" title="statement not covered">    if (mode === undefined) {</span>
+<span class="cstat-no" title="statement not covered">        mode = _0777 &amp; (~process.umask());</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (!made) <span class="cstat-no" title="statement not covered" >made = null;</span></span>
+<span class="cstat-no" title="statement not covered">    if (!made) <span class="cstat-no" title="statement not covered">made = null;</span></span>
     
-<span class="cstat-no" title="statement not covered" >    var cb = f || <span class="fstat-no" title="function not covered" >function () {</span>};</span>
-<span class="cstat-no" title="statement not covered" >    p = path.resolve(p);</span>
+<span class="cstat-no" title="statement not covered">    var cb = f || <span class="fstat-no" title="function not covered">function () {</span>};</span>
+<span class="cstat-no" title="statement not covered">    p = path.resolve(p);</span>
     
-<span class="cstat-no" title="statement not covered" >    xfs.mkdir(p, mode, <span class="fstat-no" title="function not covered" >function (er) {</span></span>
-<span class="cstat-no" title="statement not covered" >        if (!er) {</span>
-<span class="cstat-no" title="statement not covered" >            made = made || p;</span>
-<span class="cstat-no" title="statement not covered" >            return cb(null, made);</span>
+<span class="cstat-no" title="statement not covered">    xfs.mkdir(p, mode, <span class="fstat-no" title="function not covered">function (er) {</span></span>
+<span class="cstat-no" title="statement not covered">        if (!er) {</span>
+<span class="cstat-no" title="statement not covered">            made = made || p;</span>
+<span class="cstat-no" title="statement not covered">            return cb(null, made);</span>
         }
-<span class="cstat-no" title="statement not covered" >        switch (er.code) {</span>
+<span class="cstat-no" title="statement not covered">        switch (er.code) {</span>
             case 'ENOENT':
-<span class="cstat-no" title="statement not covered" >                mkdirP(path.dirname(p), opts, <span class="fstat-no" title="function not covered" >function (er, made) {</span></span>
-<span class="cstat-no" title="statement not covered" >                    if (er) <span class="cstat-no" title="statement not covered" >cb(er, made);</span></span>
-                    else <span class="cstat-no" title="statement not covered" >mkdirP(p, opts, cb, made);</span>
+<span class="cstat-no" title="statement not covered">                mkdirP(path.dirname(p), opts, <span class="fstat-no" title="function not covered">function (er, made) {</span></span>
+<span class="cstat-no" title="statement not covered">                    if (er) <span class="cstat-no" title="statement not covered">cb(er, made);</span></span>
+                    else <span class="cstat-no" title="statement not covered">mkdirP(p, opts, cb, made);</span>
                 });
-<span class="cstat-no" title="statement not covered" >                break;</span>
+<span class="cstat-no" title="statement not covered">                break;</span>
 &nbsp;
             // In the case of any other error, just see if there's a dir
             // there already.  If so, then hooray!  If not, then something
             // is borked.
             default:
-<span class="cstat-no" title="statement not covered" >                xfs.stat(p, <span class="fstat-no" title="function not covered" >function (er2, stat) {</span></span>
+<span class="cstat-no" title="statement not covered">                xfs.stat(p, <span class="fstat-no" title="function not covered">function (er2, stat) {</span></span>
                     // if the stat fails, then that's super weird.
                     // let the original error be the failure reason.
-<span class="cstat-no" title="statement not covered" >                    if (er2 || !stat.isDirectory()) <span class="cstat-no" title="statement not covered" >cb(er, made)</span></span>
-                    else <span class="cstat-no" title="statement not covered" >cb(null, made);</span>
+<span class="cstat-no" title="statement not covered">                    if (er2 || !stat.isDirectory()) <span class="cstat-no" title="statement not covered">cb(er, made)</span></span>
+                    else <span class="cstat-no" title="statement not covered">cb(null, made);</span>
                 });
-<span class="cstat-no" title="statement not covered" >                break;</span>
+<span class="cstat-no" title="statement not covered">                break;</span>
         }
     });
 }
 &nbsp;
-mkdirP.sync = <span class="fstat-no" title="function not covered" >function sync (p, opts, made) {</span>
-<span class="cstat-no" title="statement not covered" >    if (!opts || typeof opts !== 'object') {</span>
-<span class="cstat-no" title="statement not covered" >        opts = { mode: opts };</span>
+mkdirP.sync = <span class="fstat-no" title="function not covered">function sync (p, opts, made) {</span>
+<span class="cstat-no" title="statement not covered">    if (!opts || typeof opts !== 'object') {</span>
+<span class="cstat-no" title="statement not covered">        opts = { mode: opts };</span>
     }
     
-<span class="cstat-no" title="statement not covered" >    var mode = opts.mode;</span>
-<span class="cstat-no" title="statement not covered" >    var xfs = opts.fs || fs;</span>
+<span class="cstat-no" title="statement not covered">    var mode = opts.mode;</span>
+<span class="cstat-no" title="statement not covered">    var xfs = opts.fs || fs;</span>
     
-<span class="cstat-no" title="statement not covered" >    if (mode === undefined) {</span>
-<span class="cstat-no" title="statement not covered" >        mode = _0777 &amp; (~process.umask());</span>
+<span class="cstat-no" title="statement not covered">    if (mode === undefined) {</span>
+<span class="cstat-no" title="statement not covered">        mode = _0777 &amp; (~process.umask());</span>
     }
-<span class="cstat-no" title="statement not covered" >    if (!made) <span class="cstat-no" title="statement not covered" >made = null;</span></span>
+<span class="cstat-no" title="statement not covered">    if (!made) <span class="cstat-no" title="statement not covered">made = null;</span></span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    p = path.resolve(p);</span>
+<span class="cstat-no" title="statement not covered">    p = path.resolve(p);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >        xfs.mkdirSync(p, mode);</span>
-<span class="cstat-no" title="statement not covered" >        made = made || p;</span>
+<span class="cstat-no" title="statement not covered">    try {</span>
+<span class="cstat-no" title="statement not covered">        xfs.mkdirSync(p, mode);</span>
+<span class="cstat-no" title="statement not covered">        made = made || p;</span>
     }
     catch (err0) {
-<span class="cstat-no" title="statement not covered" >        switch (err0.code) {</span>
+<span class="cstat-no" title="statement not covered">        switch (err0.code) {</span>
             case 'ENOENT' :
-<span class="cstat-no" title="statement not covered" >                made = sync(path.dirname(p), opts, made);</span>
-<span class="cstat-no" title="statement not covered" >                sync(p, opts, made);</span>
-<span class="cstat-no" title="statement not covered" >                break;</span>
+<span class="cstat-no" title="statement not covered">                made = sync(path.dirname(p), opts, made);</span>
+<span class="cstat-no" title="statement not covered">                sync(p, opts, made);</span>
+<span class="cstat-no" title="statement not covered">                break;</span>
 &nbsp;
             // In the case of any other error, just see if there's a dir
             // there already.  If so, then hooray!  If not, then something
             // is borked.
             default:
-<span class="cstat-no" title="statement not covered" >                var stat;</span>
-<span class="cstat-no" title="statement not covered" >                try {</span>
-<span class="cstat-no" title="statement not covered" >                    stat = xfs.statSync(p);</span>
+<span class="cstat-no" title="statement not covered">                var stat;</span>
+<span class="cstat-no" title="statement not covered">                try {</span>
+<span class="cstat-no" title="statement not covered">                    stat = xfs.statSync(p);</span>
                 }
                 catch (err1) {
-<span class="cstat-no" title="statement not covered" >                    throw err0;</span>
+<span class="cstat-no" title="statement not covered">                    throw err0;</span>
                 }
-<span class="cstat-no" title="statement not covered" >                if (!stat.isDirectory()) <span class="cstat-no" title="statement not covered" >throw err0;</span></span>
-<span class="cstat-no" title="statement not covered" >                break;</span>
+<span class="cstat-no" title="statement not covered">                if (!stat.isDirectory()) <span class="cstat-no" title="statement not covered">throw err0;</span></span>
+<span class="cstat-no" title="statement not covered">                break;</span>
         }
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return made;</span>
+<span class="cstat-no" title="statement not covered">    return made;</span>
 };
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
     <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 15 2017 21:39:47 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
